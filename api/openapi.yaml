@@ -1,0 +1,636 @@
+openapi: 3.0.3
+info:
+  title: Snap Conversions API
+  version: 1.0.0
+servers:
+- description: Production server
+  url: https://tr.snapchat.com/
+- description: Staging server
+  url: https://tr-shadow.snapchat.com/
+security:
+- bearerAuth: []
+paths:
+  /v2/conversion:
+    post:
+      operationId: sendData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/capi_event'
+              type: array
+        description: Snap Conversions API
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+          description: successful operation
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+          description: unsuccessful operation
+      x-codegen-request-body-name: body
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/conversion/validate:
+    post:
+      operationId: sendTestData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/capi_event'
+              type: array
+        description: Snap Conversions API
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/test_response'
+          description: successful operation
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/test_response'
+          description: unsuccessful operation
+      x-codegen-request-body-name: body
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/conversion/validate/logs:
+    get:
+      description: Returns a list of test events in last 24 hours
+      operationId: conversionValidateLogs
+      parameters:
+      - explode: true
+        in: query
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response_logs'
+          description: successful operation
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response_logs'
+          description: unsuccessful operation
+      x-codegen-request-body-name: body
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/conversion/validate/stats:
+    get:
+      description: Returns the stats on test and non-test events in the past hour
+      operationId: conversionValidateStats
+      parameters:
+      - explode: true
+        in: query
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response_stats'
+          description: successful operation
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response_stats'
+          description: unsuccessful operation
+      x-codegen-request-body-name: body
+      x-content-type: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    capi_event:
+      example:
+        page_url: page_url
+        number_items: number_items
+        hashed_email: hashed_email
+        description: description
+        hashed_city_sdx: hashed_city_sdx
+        search_string: search_string
+        pixel_id: pixel_id
+        hashed_last_name_sha: hashed_last_name_sha
+        item_category: item_category
+        event_tag: event_tag
+        event_type: event_type
+        client_dedup_id: client_dedup_id
+        data_use: data_use
+        price: price
+        hashed_state_sdx: hashed_state_sdx
+        hashed_middle_name_sha: hashed_middle_name_sha
+        hashed_dob_month: hashed_dob_month
+        currency: currency
+        app_id: app_id
+        sign_up_method: sign_up_method
+        hashed_first_name_sdx: hashed_first_name_sdx
+        user_agent: user_agent
+        snap_app_id: snap_app_id
+        timestamp: timestamp
+        transaction_id: transaction_id
+        hashed_middle_name_sdx: hashed_middle_name_sdx
+        uuid_c1: uuid_c1
+        hashed_city_sha: hashed_city_sha
+        level: level
+        hashed_dob_day: hashed_dob_day
+        hashed_idfv: hashed_idfv
+        hashed_last_name_sdx: hashed_last_name_sdx
+        hashed_phone_number: hashed_phone_number
+        hashed_first_name_sha: hashed_first_name_sha
+        hashed_ip_address: hashed_ip_address
+        hashed_state_sha: hashed_state_sha
+        hashed_zip: hashed_zip
+        click_id: click_id
+        event_conversion_type: event_conversion_type
+        hashed_mobile_ad_id: hashed_mobile_ad_id
+        item_ids: item_ids
+        integration: integration
+      properties:
+        pixel_id:
+          type: string
+        app_id:
+          type: string
+        snap_app_id:
+          type: string
+        event_type:
+          type: string
+        event_conversion_type:
+          type: string
+        event_tag:
+          type: string
+        timestamp:
+          type: string
+        hashed_email:
+          type: string
+        hashed_mobile_ad_id:
+          type: string
+        uuid_c1:
+          type: string
+        hashed_idfv:
+          type: string
+        hashed_phone_number:
+          type: string
+        user_agent:
+          type: string
+        hashed_ip_address:
+          type: string
+        item_category:
+          type: string
+        item_ids:
+          type: string
+        description:
+          type: string
+        number_items:
+          type: string
+        price:
+          type: string
+        currency:
+          type: string
+        transaction_id:
+          type: string
+        level:
+          type: string
+        client_dedup_id:
+          type: string
+        data_use:
+          type: string
+        search_string:
+          type: string
+        page_url:
+          type: string
+        sign_up_method:
+          type: string
+        hashed_first_name_sha:
+          type: string
+        hashed_first_name_sdx:
+          type: string
+        hashed_middle_name_sha:
+          type: string
+        hashed_middle_name_sdx:
+          type: string
+        hashed_last_name_sha:
+          type: string
+        hashed_last_name_sdx:
+          type: string
+        hashed_city_sha:
+          type: string
+        hashed_city_sdx:
+          type: string
+        hashed_state_sha:
+          type: string
+        hashed_state_sdx:
+          type: string
+        hashed_zip:
+          type: string
+        hashed_dob_month:
+          type: string
+        hashed_dob_day:
+          type: string
+        integration:
+          type: string
+        click_id:
+          type: string
+      type: object
+    response:
+      example:
+        reason: reason
+        error_records:
+        - reason: reason
+          record_indexes:
+          - 0
+          - 0
+        - reason: reason
+          record_indexes:
+          - 0
+          - 0
+        status: status
+      properties:
+        status:
+          type: string
+        reason:
+          type: string
+        error_records:
+          items:
+            $ref: '#/components/schemas/response_error_records'
+          type: array
+      type: object
+    test_response:
+      example:
+        reason: reason
+        error_records:
+        - reason: reason
+          record_indexes:
+          - 0
+          - 0
+        - reason: reason
+          record_indexes:
+          - 0
+          - 0
+        validated_fields:
+        - record_index: 0
+          validated_fields:
+            event_type: event_type
+            price: price
+            event_conversion_type: event_conversion_type
+            currency: currency
+            pixel_id: pixel_id
+            snap_app_id: snap_app_id
+        - record_index: 0
+          validated_fields:
+            event_type: event_type
+            price: price
+            event_conversion_type: event_conversion_type
+            currency: currency
+            pixel_id: pixel_id
+            snap_app_id: snap_app_id
+        warning_records:
+        - reason: reason
+          record_indexes:
+          - 0
+          - 0
+        - reason: reason
+          record_indexes:
+          - 0
+          - 0
+        status: status
+      properties:
+        status:
+          type: string
+        reason:
+          type: string
+        error_records:
+          items:
+            $ref: '#/components/schemas/response_error_records'
+          type: array
+        warning_records:
+          items:
+            $ref: '#/components/schemas/response_error_records'
+          type: array
+        validated_fields:
+          items:
+            $ref: '#/components/schemas/validated_fields'
+          type: array
+      type: object
+    response_error_records:
+      example:
+        reason: reason
+        record_indexes:
+        - 0
+        - 0
+      properties:
+        reason:
+          type: string
+        record_indexes:
+          items:
+            format: int32
+            type: integer
+          type: array
+      type: object
+    response_logs:
+      example:
+        reason: reason
+        logs:
+        - event_type: event_type
+          error_records:
+          - error_records
+          - error_records
+          event_conversion_type: event_conversion_type
+          integration: integration
+          event_metadata:
+            page_url: page_url
+            number_items: number_items
+            hashed_email: hashed_email
+            description: description
+            hashed_city_sdx: hashed_city_sdx
+            search_string: search_string
+            pixel_id: pixel_id
+            hashed_last_name_sha: hashed_last_name_sha
+            item_category: item_category
+            event_tag: event_tag
+            event_type: event_type
+            client_dedup_id: client_dedup_id
+            data_use: data_use
+            price: price
+            hashed_state_sdx: hashed_state_sdx
+            hashed_middle_name_sha: hashed_middle_name_sha
+            hashed_dob_month: hashed_dob_month
+            currency: currency
+            app_id: app_id
+            sign_up_method: sign_up_method
+            hashed_first_name_sdx: hashed_first_name_sdx
+            user_agent: user_agent
+            snap_app_id: snap_app_id
+            timestamp: timestamp
+            transaction_id: transaction_id
+            hashed_middle_name_sdx: hashed_middle_name_sdx
+            uuid_c1: uuid_c1
+            hashed_city_sha: hashed_city_sha
+            level: level
+            hashed_dob_day: hashed_dob_day
+            hashed_idfv: hashed_idfv
+            hashed_last_name_sdx: hashed_last_name_sdx
+            hashed_phone_number: hashed_phone_number
+            hashed_first_name_sha: hashed_first_name_sha
+            hashed_ip_address: hashed_ip_address
+            hashed_state_sha: hashed_state_sha
+            hashed_zip: hashed_zip
+            click_id: click_id
+            event_conversion_type: event_conversion_type
+            hashed_mobile_ad_id: hashed_mobile_ad_id
+            item_ids: item_ids
+            integration: integration
+          warning_records:
+          - warning_records
+          - warning_records
+          timestamp: timestamp
+          status: status
+        - event_type: event_type
+          error_records:
+          - error_records
+          - error_records
+          event_conversion_type: event_conversion_type
+          integration: integration
+          event_metadata:
+            page_url: page_url
+            number_items: number_items
+            hashed_email: hashed_email
+            description: description
+            hashed_city_sdx: hashed_city_sdx
+            search_string: search_string
+            pixel_id: pixel_id
+            hashed_last_name_sha: hashed_last_name_sha
+            item_category: item_category
+            event_tag: event_tag
+            event_type: event_type
+            client_dedup_id: client_dedup_id
+            data_use: data_use
+            price: price
+            hashed_state_sdx: hashed_state_sdx
+            hashed_middle_name_sha: hashed_middle_name_sha
+            hashed_dob_month: hashed_dob_month
+            currency: currency
+            app_id: app_id
+            sign_up_method: sign_up_method
+            hashed_first_name_sdx: hashed_first_name_sdx
+            user_agent: user_agent
+            snap_app_id: snap_app_id
+            timestamp: timestamp
+            transaction_id: transaction_id
+            hashed_middle_name_sdx: hashed_middle_name_sdx
+            uuid_c1: uuid_c1
+            hashed_city_sha: hashed_city_sha
+            level: level
+            hashed_dob_day: hashed_dob_day
+            hashed_idfv: hashed_idfv
+            hashed_last_name_sdx: hashed_last_name_sdx
+            hashed_phone_number: hashed_phone_number
+            hashed_first_name_sha: hashed_first_name_sha
+            hashed_ip_address: hashed_ip_address
+            hashed_state_sha: hashed_state_sha
+            hashed_zip: hashed_zip
+            click_id: click_id
+            event_conversion_type: event_conversion_type
+            hashed_mobile_ad_id: hashed_mobile_ad_id
+            item_ids: item_ids
+            integration: integration
+          warning_records:
+          - warning_records
+          - warning_records
+          timestamp: timestamp
+          status: status
+        status: status
+      properties:
+        status:
+          type: string
+        reason:
+          type: string
+        logs:
+          items:
+            $ref: '#/components/schemas/response_logs_log'
+          type: array
+    response_logs_log:
+      example:
+        event_type: event_type
+        error_records:
+        - error_records
+        - error_records
+        event_conversion_type: event_conversion_type
+        integration: integration
+        event_metadata:
+          page_url: page_url
+          number_items: number_items
+          hashed_email: hashed_email
+          description: description
+          hashed_city_sdx: hashed_city_sdx
+          search_string: search_string
+          pixel_id: pixel_id
+          hashed_last_name_sha: hashed_last_name_sha
+          item_category: item_category
+          event_tag: event_tag
+          event_type: event_type
+          client_dedup_id: client_dedup_id
+          data_use: data_use
+          price: price
+          hashed_state_sdx: hashed_state_sdx
+          hashed_middle_name_sha: hashed_middle_name_sha
+          hashed_dob_month: hashed_dob_month
+          currency: currency
+          app_id: app_id
+          sign_up_method: sign_up_method
+          hashed_first_name_sdx: hashed_first_name_sdx
+          user_agent: user_agent
+          snap_app_id: snap_app_id
+          timestamp: timestamp
+          transaction_id: transaction_id
+          hashed_middle_name_sdx: hashed_middle_name_sdx
+          uuid_c1: uuid_c1
+          hashed_city_sha: hashed_city_sha
+          level: level
+          hashed_dob_day: hashed_dob_day
+          hashed_idfv: hashed_idfv
+          hashed_last_name_sdx: hashed_last_name_sdx
+          hashed_phone_number: hashed_phone_number
+          hashed_first_name_sha: hashed_first_name_sha
+          hashed_ip_address: hashed_ip_address
+          hashed_state_sha: hashed_state_sha
+          hashed_zip: hashed_zip
+          click_id: click_id
+          event_conversion_type: event_conversion_type
+          hashed_mobile_ad_id: hashed_mobile_ad_id
+          item_ids: item_ids
+          integration: integration
+        warning_records:
+        - warning_records
+        - warning_records
+        timestamp: timestamp
+        status: status
+      properties:
+        timestamp:
+          type: string
+        event_type:
+          type: string
+        event_conversion_type:
+          type: string
+        status:
+          type: string
+        integration:
+          type: string
+        event_metadata:
+          $ref: '#/components/schemas/capi_event'
+        error_records:
+          items:
+            type: string
+          type: array
+        warning_records:
+          items:
+            type: string
+          type: array
+      type: object
+    response_stats:
+      example:
+        reason: reason
+        stats:
+          test:
+            event_count_past_hour: 6
+            latest_event_ts: 0
+          live:
+            event_count_past_hour: 6
+            latest_event_ts: 0
+        status: status
+      properties:
+        status:
+          type: string
+        reason:
+          type: string
+        stats:
+          $ref: '#/components/schemas/response_stats_data'
+    response_stats_test:
+      example:
+        event_count_past_hour: 6
+        latest_event_ts: 0
+      properties:
+        latest_event_ts:
+          format: int64
+          type: integer
+        event_count_past_hour:
+          format: int64
+          type: integer
+    response_stats_data:
+      example:
+        test:
+          event_count_past_hour: 6
+          latest_event_ts: 0
+        live:
+          event_count_past_hour: 6
+          latest_event_ts: 0
+      properties:
+        test:
+          $ref: '#/components/schemas/response_stats_test'
+        live:
+          $ref: '#/components/schemas/response_stats_test'
+      type: object
+    validated_fields:
+      example:
+        record_index: 0
+        validated_fields:
+          event_type: event_type
+          price: price
+          event_conversion_type: event_conversion_type
+          currency: currency
+          pixel_id: pixel_id
+          snap_app_id: snap_app_id
+      properties:
+        validated_fields:
+          $ref: '#/components/schemas/validated_fields_items'
+        record_index:
+          type: integer
+      type: object
+    validated_fields_items:
+      example:
+        event_type: event_type
+        price: price
+        event_conversion_type: event_conversion_type
+        currency: currency
+        pixel_id: pixel_id
+        snap_app_id: snap_app_id
+      properties:
+        pixel_id:
+          type: string
+        snap_app_id:
+          type: string
+        currency:
+          type: string
+        price:
+          type: string
+        event_conversion_type:
+          type: string
+        event_type:
+          type: string
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+
