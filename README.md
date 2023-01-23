@@ -38,7 +38,6 @@ Add this dependency to your project's build file:
 
   dependencies {
      implementation "com.snap.business.sdk:capi-java:1.1.0"
-     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
   }
 ```
 
