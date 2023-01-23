@@ -146,17 +146,19 @@ public class SendEvents {
 - Conversion events can be reported in batch using sendEvents(List<CapiEvent> capiEvents) if they are buffered in your application.
 - Events are encapsulated in an asynchronous request in both solutions by which your application won’t be blocked. The response is logged by a default callback (under debugging mode)
 - Please use sendEvents(List<CapiEvent> capiEvents, ApiCallback<Response> callback)if a custom callback is preferred.
+- We recommend a 1000 QPS limit for sending us requests. You may send up to 2000 events per batch request, and can thus send up to 2M events/sec. Sending more than 2000 events per batch will result in a 400 error.
 
-### Test Events
+### Test Events, Logs, and Stats
 Snap’s Conversion API provides the validate, log, and stats endpoints for advertisers to test their events and obtain more information on how each of the test event was processed.
-- Creating and setting up a test event is the same as setting up to send a production event. Clients must simply call the SendTestEvent function instead of the production functions.
-- The stats and logs should be called after sending and receiving a successful response from the test event endpoint.
+- Conversion events can be sent for testing and validation via the sendTestEvent(event).
+- Conversion API also provides a logging endpoint. It returns a summary of test CAPI events sent to the test endpoint within the past day.
+- Conversion API’s stats endpoint provides basic stats and summary of the test events sent.
+- Please check example/SendTestEvents.java for more information.
 
 ### Debugging Mode
 - When debugging mode is turned on, we will log the events, api call response and exceptions using [SLF4J](https://www.slf4j.org/manual.html) logger.
   - By default, SLF4J logger will bind to [java.util.logging](https://www.slf4j.org/api/org/slf4j/jul/JDK14LoggerAdapter.html) (JUL) and log to console.
   - SLF4J logger can detect the logging framework from your class path and bind a logging framework at deployment time. It can support various logging frameworks (e.g. log4j, reload4j, JUL, logback, etc).
 
-
-
+Please open a GitHub issue if you want to record a bug report, enhancement proposal, or give any other product feedback.
 
