@@ -38,6 +38,7 @@ Add this dependency to your project's build file:
 
   dependencies {
      implementation "com.snap.business.sdk:capi-java:1.1.0"
+     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
   }
 ```
 
@@ -98,7 +99,7 @@ public class SendEvents {
       // Use case 3: Send test events
       TestResponse res1 = capi.sendTestEvent(e2);
       System.out.println(res1);
-      
+
       TestResponse res2 = capi.sendTestEvents(Arrays.asList(e1, e2));
       System.out.println(res2);
 
@@ -129,9 +130,9 @@ public class SendEvents {
 
 ### Build CapiEvent
 - Please check with the section [Conversion Parameters](https://marketingapi.snapchat.com/docs/conversion.html#additional-data-formatting-guidelines) and provide as much information as possible when creating the CapiEvent object.
-- Every CAPI attribute has a corresponding setter in the CapiEvent class following the camelcase naming convention.  
+- Every CAPI attribute has a corresponding setter in the CapiEvent class following the camelcase naming convention.
 - At least one of the following parameters is required in order to successfully send events via the Conversions API. When possible, we recommend passing all of the below parameters to improve performance:
-  
+
   - hashed_email
   - hashed_phone
   - hashed_ip and user_agent
