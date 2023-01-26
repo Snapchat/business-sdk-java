@@ -148,12 +148,12 @@ public class ConversionApi {
         return result;
     }
 
-    public okhttp3.Call sendEvent(CapiEvent capiEvent) {
-        return sendEvents(Arrays.asList(capiEvent));
+    public void sendEvent(CapiEvent capiEvent) {
+        sendEvents(Arrays.asList(capiEvent));
     }
 
-    public okhttp3.Call sendEvents(List<CapiEvent> capiEvents) {
-        return sendEvents(capiEvents, new ApiCallback<Response>() {
+    public void sendEvents(List<CapiEvent> capiEvents) {
+         sendEvents(capiEvents, new ApiCallback<Response>() {
 
             @Override
             public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
@@ -177,18 +177,17 @@ public class ConversionApi {
         });
     }
 
-    public okhttp3.Call sendEvents(List<CapiEvent> capiEvents, ApiCallback<Response> callback) {
+    public void sendEvents(List<CapiEvent> capiEvents, ApiCallback<Response> callback) {
         try {
             for (CapiEvent capiEvent : capiEvents) {
                 // Hardcode the integration field in conversion events
                 capiEvent.integration(CapiConstants.INTEGRATION_SDK);
                 logEvent(Level.INFO, capiEvent.toString());
             }
-            return capi.sendDataAsync(capiEvents, callback);
+            capi.sendDataAsync(capiEvents, callback);
         } catch (Exception e) {
             logEvent(Level.SEVERE, ExceptionUtils.getStackTrace(e));
         }
-        return null;
     }
 
     private void logEvent(Level level, String logMessage) {

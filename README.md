@@ -1,7 +1,7 @@
 # capi-java
 
 Snap Conversions API
-- SDK version: 1.1.0
+- SDK version: 1.1.2
 
 ## Requirements
 
@@ -21,7 +21,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.snap.business.sdk</groupId>
   <artifactId>capi-java</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -37,7 +37,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.snap.business.sdk:capi-java:1.1.0"
+     implementation "com.snap.business.sdk:capi-java:1.1.2"
   }
 ```
 
