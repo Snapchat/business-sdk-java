@@ -12,6 +12,9 @@ ext {
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.com/m2/"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.+'
