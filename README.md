@@ -1,7 +1,5 @@
-# capi-java
+# business-sdk-java
 
-Snap Conversions API
-- SDK version: 1.1.3
 
 ## Requirements
 
@@ -21,7 +19,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.snap.business.sdk</groupId>
   <artifactId>capi-java</artifactId>
-  <version>1.1.3</version>
+  <version>1.1.4</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -37,7 +35,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.snap.business.sdk:capi-java:1.1.3"
+     implementation "com.snap.business.sdk:capi-java:1.1.4"
   }
 ```
 
@@ -116,8 +114,6 @@ public class SendEvents {
 
 
 ```
-
-## Notes
 
 ### Initiate ConversionApi
 - Please use ConversionApi(String longLivedToken, String launchPadUrl) if the Launch Pad has been set up under your domain. Conversion events will be forwarded to Snap transparently. (Other MPC features will be introduced in later versions).
