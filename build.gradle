@@ -5,7 +5,7 @@ apply plugin: 'com.diffplug.spotless'
 
 ext {
     PUBLISH_GROUP_ID = 'com.snap.business.sdk'
-    PUBLISH_VERSION = '1.1.3'
+    PUBLISH_VERSION = '1.1.4'
     PUBLISH_ARTIFACT_ID = 'capi-java'
 }
 
@@ -13,7 +13,7 @@ buildscript {
     repositories {
         mavenCentral()
         maven {
-            url "https://plugins.gradle.com/m2/"
+            url "https://plugins.gradle.org/m2/"
         }
     }
     dependencies {

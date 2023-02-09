@@ -24,6 +24,7 @@ public class ConversionApi {
     private DefaultApi capi = new DefaultApi(client);
     private boolean isLaunchPadEnabled = false;
     private boolean isDebugEnabled = false;
+    private boolean isInternalDebugEnabled = false;
 
     public ConversionApi(String longLivedToken) {
         this(longLivedToken, "");
@@ -94,7 +95,15 @@ public class ConversionApi {
 
     public void setDebugging(boolean isEnabled) {
         this.isDebugEnabled = isEnabled;
-        logger.info("[Snap Business SDK] Debug mode is enabled");
+        String logMsg = isEnabled ? "[Snap Business SDK] Debug mode is enabled" : "[Snap Business SDK] Debug mode is disabled";
+        logger.info(logMsg);
+    }
+
+    public void setInternalDebugging(boolean isEnabled) {
+        this.isInternalDebugEnabled = isEnabled;
+        this.capi.getApiClient().setDebugging(this.isInternalDebugEnabled);
+        String logMsg = isEnabled ? "[Snap Business SDK] Internal debug mode is enabled" : "[Snap Business SDK] Internal debug mode is disabled";
+        logger.info(logMsg);
     }
 
     public Logger getLogger() {
@@ -131,6 +140,7 @@ public class ConversionApi {
         // Parse from response body if possible
         try {
             result = Response.fromJson(e.getResponseBody());
+            result = result == null ? new Response().status("FAILED").reason(ExceptionUtils.getStackTrace(e)) : result;
         } catch (Exception ex) {
             result = new Response().status("FAILED").reason(ExceptionUtils.getStackTrace(e));
         }

@@ -146,6 +146,16 @@ public class ApiException extends Exception {
     }
 
     /**
+     * Get the HTTP response headers in string format
+     *
+     * @return Response headers in the form of string, none if null
+     */
+    public String getResponseHeadersString() {
+        return responseHeaders != null ? responseHeaders.toString() : "none";
+    }
+
+
+    /**
      * Get the HTTP response body.
      *
      * @return Response body in the form of string
@@ -161,6 +171,6 @@ public class ApiException extends Exception {
      */
     public String getMessage() {
         return String.format("Message: %s%nHTTP response code: %s%nHTTP response body: %s%nHTTP response headers: %s",
-                super.getMessage(), this.getCode(), this.getResponseBody(), this.getResponseHeaders().toString());
+                super.getMessage(), this.getCode(), this.getResponseBody(), this.getResponseHeadersString());
     }
 }
