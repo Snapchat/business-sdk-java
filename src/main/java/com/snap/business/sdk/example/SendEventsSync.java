@@ -4,8 +4,13 @@ import com.snap.business.sdk.api.ConversionApi;
 import com.snap.business.sdk.model.CapiEvent;
 import com.snap.business.sdk.model.Response;
 import com.snap.business.sdk.util.CapiConstants;
+import okhttp3.ConnectionPool;
+import okhttp3.Dispatcher;
+import okhttp3.OkHttpClient;
 
 import java.util.Arrays;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class SendEventsSync {
     private final static String API_TOKEN = "INSERT_YOUR_CAPI_TOKEN";
@@ -13,7 +18,19 @@ public class SendEventsSync {
     private final static String LAUNCH_PAD_URL = "INSERT_YOUR_LAUNCH_PAD_URL";
 
     public static void main(String[] args) {
-        ConversionApi capi = new ConversionApi(API_TOKEN, LAUNCH_PAD_URL);
+        final Dispatcher dispatcher = new Dispatcher(Executors.newCachedThreadPool());
+        dispatcher.setMaxRequests(32);
+        dispatcher.setMaxRequestsPerHost(32);
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .dispatcher(dispatcher)
+                .connectionPool(new ConnectionPool(32,30, TimeUnit.SECONDS))
+                .writeTimeout(15, TimeUnit.SECONDS)  // 10s by default
+                .connectTimeout(15,TimeUnit.SECONDS)  // 10s by default
+                .retryOnConnectionFailure(true)
+                .build();
+
+        ConversionApi capi = new ConversionApi(API_TOKEN, LAUNCH_PAD_URL, okHttpClient);
 
         // (Optional) Enable logging
         // capi.setDebugging(true);

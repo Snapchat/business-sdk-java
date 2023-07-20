@@ -9,6 +9,7 @@ import com.snap.business.sdk.model.ResponseLogs;
 import com.snap.business.sdk.model.ResponseStats;
 import com.snap.business.sdk.model.TestResponse;
 import com.snap.business.sdk.util.CapiConstants;
+import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.util.Arrays;
@@ -20,17 +21,31 @@ import java.util.logging.Level;
 
 public class ConversionApi {
     private static final Logger logger = LoggerFactory.getLogger(ConversionApi.class);
-    private ApiClient client = new ApiClient();
-    private DefaultApi capi = new DefaultApi(client);
+    private ApiClient client;
+    private DefaultApi capi;
     private boolean isLaunchPadEnabled = false;
     private boolean isDebugEnabled = false;
     private boolean isInternalDebugEnabled = false;
 
     public ConversionApi(String longLivedToken) {
-        this(longLivedToken, "");
+        this(longLivedToken, "", null);
     }
 
     public ConversionApi(String longLivedToken, String launchPadUrl) {
+        this(longLivedToken, launchPadUrl, null);
+    }
+
+    public ConversionApi(String longLivedToken, OkHttpClient okHttpClient) {
+        this(longLivedToken, "", okHttpClient);
+    }
+
+    public ConversionApi(String longLivedToken, String launchPadUrl, OkHttpClient okHttpClient) {
+        if (okHttpClient == null) {
+            client = new ApiClient();
+        }
+        else {
+            client = new ApiClient(okHttpClient);
+        }
         client.setBearerToken(longLivedToken);
         isLaunchPadEnabled = !(launchPadUrl == null || launchPadUrl.trim().isEmpty());
         client.addDefaultHeader(CapiConstants.SDK_VER_HEADER,
@@ -43,6 +58,7 @@ public class ConversionApi {
         else {
             client.setUserAgent(CapiConstants.USER_AGENT);
         }
+        capi = new DefaultApi(client);
     }
 
     public TestResponse sendTestEvent(CapiEvent capiEvent) {

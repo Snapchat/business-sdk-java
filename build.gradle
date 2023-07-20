@@ -5,7 +5,7 @@ apply plugin: 'com.diffplug.spotless'
 
 ext {
     PUBLISH_GROUP_ID = 'com.snap.business.sdk'
-    PUBLISH_VERSION = '1.1.4'
+    PUBLISH_VERSION = '1.1.6'
     PUBLISH_ARTIFACT_ID = 'capi-java'
 }
 

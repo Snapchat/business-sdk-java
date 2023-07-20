@@ -64,7 +64,6 @@ public class ApiClient {
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private Map<String, String> defaultCookieMap = new HashMap<String, String>();
     private String tempFolderPath = null;
-    private static final int MAX_CONNECTIONS = 32;
 
     private Map<String, Authentication> authentications;
 
@@ -121,22 +120,8 @@ public class ApiClient {
         for (Interceptor interceptor: interceptors) {
             builder.addInterceptor(interceptor);
         }
-        
-        builder.dispatcher(createDispatcher());
-        builder.connectionPool(createConnectionPool());
 
         httpClient = builder.build();
-    }
-
-    private static Dispatcher createDispatcher() {
-        final Dispatcher dispatcher = new Dispatcher();
-        dispatcher.setMaxRequests(MAX_CONNECTIONS);
-        dispatcher.setMaxRequestsPerHost(MAX_CONNECTIONS);
-        return dispatcher;
-    }
-
-    private static ConnectionPool createConnectionPool() {
-        return new ConnectionPool(MAX_CONNECTIONS, 10_000, TimeUnit.MILLISECONDS);
     }
 
     private void init() {

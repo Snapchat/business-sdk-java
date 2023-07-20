@@ -2,7 +2,7 @@ package com.snap.business.sdk.util;
 
 public class CapiConstants {
     public final static String SDK_LANGUAGE = "java";
-    public final static String SDK_VERSION = "1.1.5";
+    public final static String SDK_VERSION = "1.1.6";
     public final static String API_VERSION = "v2";
     public final static String PROD_URL = "https://tr.snapchat.com/" + API_VERSION;
     public final static String STAGING_URL = "https://tr-shadow.snapchat.com/" + API_VERSION;

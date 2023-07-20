@@ -19,7 +19,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.snap.business.sdk</groupId>
   <artifactId>capi-java</artifactId>
-  <version>1.1.5</version>
+  <version>1.1.6</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -35,7 +35,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.snap.business.sdk:capi-java:1.1.5"
+     implementation "com.snap.business.sdk:capi-java:1.1.6"
   }
 ```
 
@@ -155,5 +155,8 @@ Snap’s Conversion API provides the validate, log, and stats endpoints for adve
   - By default, SLF4J logger will bind to [java.util.logging](https://www.slf4j.org/api/org/slf4j/jul/JDK14LoggerAdapter.html) (JUL) and log to console.
   - SLF4J logger can detect the logging framework from your class path and bind a logging framework at deployment time. It can support various logging frameworks (e.g. log4j, reload4j, JUL, logback, etc).
 
+### Customize the http client
+- When you create an instance of ConversionApi, it utilizes a default OkHttpClient by default. However, you can choose to provide a custom client by passing it as an argument to the constructor. For more details, please refer to the example in SendEventsSync.
+  
 Please open a GitHub issue if you want to record a bug report, enhancement proposal, or give any other product feedback.
 
