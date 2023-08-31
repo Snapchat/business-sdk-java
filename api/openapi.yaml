@@ -125,6 +125,7 @@ components:
     capi_event:
       example:
         page_url: page_url
+        country: country
         number_items: number_items
         hashed_email: hashed_email
         description: description
@@ -150,6 +151,7 @@ components:
         timestamp: timestamp
         transaction_id: transaction_id
         hashed_middle_name_sdx: hashed_middle_name_sdx
+        brands: brands
         uuid_c1: uuid_c1
         hashed_city_sha: hashed_city_sha
         level: level
@@ -166,6 +168,7 @@ components:
         hashed_mobile_ad_id: hashed_mobile_ad_id
         item_ids: item_ids
         integration: integration
+        region: region
       properties:
         pixel_id:
           type: string
@@ -250,6 +253,12 @@ components:
         integration:
           type: string
         click_id:
+          type: string
+        brands:
+          type: string
+        country:
+          type: string
+        region:
           type: string
       type: object
     response:
@@ -359,6 +368,7 @@ components:
           integration: integration
           event_metadata:
             page_url: page_url
+            country: country
             number_items: number_items
             hashed_email: hashed_email
             description: description
@@ -384,6 +394,7 @@ components:
             timestamp: timestamp
             transaction_id: transaction_id
             hashed_middle_name_sdx: hashed_middle_name_sdx
+            brands: brands
             uuid_c1: uuid_c1
             hashed_city_sha: hashed_city_sha
             level: level
@@ -400,6 +411,7 @@ components:
             hashed_mobile_ad_id: hashed_mobile_ad_id
             item_ids: item_ids
             integration: integration
+            region: region
           warning_records:
           - warning_records
           - warning_records
@@ -413,6 +425,7 @@ components:
           integration: integration
           event_metadata:
             page_url: page_url
+            country: country
             number_items: number_items
             hashed_email: hashed_email
             description: description
@@ -438,6 +451,7 @@ components:
             timestamp: timestamp
             transaction_id: transaction_id
             hashed_middle_name_sdx: hashed_middle_name_sdx
+            brands: brands
             uuid_c1: uuid_c1
             hashed_city_sha: hashed_city_sha
             level: level
@@ -454,6 +468,7 @@ components:
             hashed_mobile_ad_id: hashed_mobile_ad_id
             item_ids: item_ids
             integration: integration
+            region: region
           warning_records:
           - warning_records
           - warning_records
@@ -479,6 +494,7 @@ components:
         integration: integration
         event_metadata:
           page_url: page_url
+          country: country
           number_items: number_items
           hashed_email: hashed_email
           description: description
@@ -504,6 +520,7 @@ components:
           timestamp: timestamp
           transaction_id: transaction_id
           hashed_middle_name_sdx: hashed_middle_name_sdx
+          brands: brands
           uuid_c1: uuid_c1
           hashed_city_sha: hashed_city_sha
           level: level
@@ -520,6 +537,7 @@ components:
           hashed_mobile_ad_id: hashed_mobile_ad_id
           item_ids: item_ids
           integration: integration
+          region: region
         warning_records:
         - warning_records
         - warning_records
