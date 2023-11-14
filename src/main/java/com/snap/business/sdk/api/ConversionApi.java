@@ -69,8 +69,10 @@ public class ConversionApi {
         TestResponse result;
         try {
             for (CapiEvent capiEvent : capiEvents) {
-                // Hardcode the integration field in conversion events
-                capiEvent.integration(CapiConstants.INTEGRATION_SDK);
+                String intgr = capiEvent.getIntegration();
+                if (intgr == null || intgr.isEmpty()) {
+                    capiEvent.integration(CapiConstants.INTEGRATION_SDK);
+                }
                 logEvent(Level.INFO, capiEvent.toString());
             }
             result = capi.sendTestData(capiEvents);
@@ -134,8 +136,10 @@ public class ConversionApi {
         Response result;
         try {
             for (CapiEvent capiEvent : capiEvents) {
-                // Hardcode the integration field in conversion events
-                capiEvent.integration(CapiConstants.INTEGRATION_SDK);
+                String intgr = capiEvent.getIntegration();
+                if (intgr == null || intgr.isEmpty()) {
+                    capiEvent.integration(CapiConstants.INTEGRATION_SDK);
+                }
                 logEvent(Level.INFO, capiEvent.toString());
             }
             result = capi.sendData(capiEvents);
@@ -206,8 +210,10 @@ public class ConversionApi {
     public void sendEvents(List<CapiEvent> capiEvents, ApiCallback<Response> callback) {
         try {
             for (CapiEvent capiEvent : capiEvents) {
-                // Hardcode the integration field in conversion events
-                capiEvent.integration(CapiConstants.INTEGRATION_SDK);
+                String intgr = capiEvent.getIntegration();
+                if (intgr == null || intgr.isEmpty()) {
+                    capiEvent.integration(CapiConstants.INTEGRATION_SDK);
+                }
                 logEvent(Level.INFO, capiEvent.toString());
             }
             capi.sendDataAsync(capiEvents, callback);

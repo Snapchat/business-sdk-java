@@ -73,6 +73,26 @@ public class ValidatedFieldsItems {
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
   private String eventType;
 
+  public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
+  @SerializedName(SERIALIZED_NAME_TIMESTAMP)
+  private String timestamp;
+
+  public static final String SERIALIZED_NAME_HASHED_EMAIL = "hashed_email";
+  @SerializedName(SERIALIZED_NAME_HASHED_EMAIL)
+  private String hashedEmail;
+
+  public static final String SERIALIZED_NAME_HASHED_PHONE = "hashed_phone";
+  @SerializedName(SERIALIZED_NAME_HASHED_PHONE)
+  private String hashedPhone;
+
+  public static final String SERIALIZED_NAME_HASHED_MOBILE_AD_ID = "hashed_mobile_ad_id";
+  @SerializedName(SERIALIZED_NAME_HASHED_MOBILE_AD_ID)
+  private String hashedMobileAdId;
+
+  public static final String SERIALIZED_NAME_HASHED_IP_ADDRESS = "hashed_ip_address";
+  @SerializedName(SERIALIZED_NAME_HASHED_IP_ADDRESS)
+  private String hashedIpAddress;
+
   public ValidatedFieldsItems() { 
   }
 
@@ -214,6 +234,121 @@ public class ValidatedFieldsItems {
   }
 
 
+  public ValidatedFieldsItems timestamp(String timestamp) {
+    
+    this.timestamp = timestamp;
+    return this;
+  }
+
+   /**
+   * Get timestamp
+   * @return timestamp
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTimestamp() {
+    return timestamp;
+  }
+
+
+  public void setTimestamp(String timestamp) {
+    this.timestamp = timestamp;
+  }
+
+
+  public ValidatedFieldsItems hashedEmail(String hashedEmail) {
+    
+    this.hashedEmail = hashedEmail;
+    return this;
+  }
+
+   /**
+   * Get hashedEmail
+   * @return hashedEmail
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getHashedEmail() {
+    return hashedEmail;
+  }
+
+
+  public void setHashedEmail(String hashedEmail) {
+    this.hashedEmail = hashedEmail;
+  }
+
+
+  public ValidatedFieldsItems hashedPhone(String hashedPhone) {
+    
+    this.hashedPhone = hashedPhone;
+    return this;
+  }
+
+   /**
+   * Get hashedPhone
+   * @return hashedPhone
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getHashedPhone() {
+    return hashedPhone;
+  }
+
+
+  public void setHashedPhone(String hashedPhone) {
+    this.hashedPhone = hashedPhone;
+  }
+
+
+  public ValidatedFieldsItems hashedMobileAdId(String hashedMobileAdId) {
+    
+    this.hashedMobileAdId = hashedMobileAdId;
+    return this;
+  }
+
+   /**
+   * Get hashedMobileAdId
+   * @return hashedMobileAdId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getHashedMobileAdId() {
+    return hashedMobileAdId;
+  }
+
+
+  public void setHashedMobileAdId(String hashedMobileAdId) {
+    this.hashedMobileAdId = hashedMobileAdId;
+  }
+
+
+  public ValidatedFieldsItems hashedIpAddress(String hashedIpAddress) {
+    
+    this.hashedIpAddress = hashedIpAddress;
+    return this;
+  }
+
+   /**
+   * Get hashedIpAddress
+   * @return hashedIpAddress
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getHashedIpAddress() {
+    return hashedIpAddress;
+  }
+
+
+  public void setHashedIpAddress(String hashedIpAddress) {
+    this.hashedIpAddress = hashedIpAddress;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -229,12 +364,17 @@ public class ValidatedFieldsItems {
         Objects.equals(this.currency, validatedFieldsItems.currency) &&
         Objects.equals(this.price, validatedFieldsItems.price) &&
         Objects.equals(this.eventConversionType, validatedFieldsItems.eventConversionType) &&
-        Objects.equals(this.eventType, validatedFieldsItems.eventType);
+        Objects.equals(this.eventType, validatedFieldsItems.eventType) &&
+        Objects.equals(this.timestamp, validatedFieldsItems.timestamp) &&
+        Objects.equals(this.hashedEmail, validatedFieldsItems.hashedEmail) &&
+        Objects.equals(this.hashedPhone, validatedFieldsItems.hashedPhone) &&
+        Objects.equals(this.hashedMobileAdId, validatedFieldsItems.hashedMobileAdId) &&
+        Objects.equals(this.hashedIpAddress, validatedFieldsItems.hashedIpAddress);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pixelId, snapAppId, currency, price, eventConversionType, eventType);
+    return Objects.hash(pixelId, snapAppId, currency, price, eventConversionType, eventType, timestamp, hashedEmail, hashedPhone, hashedMobileAdId, hashedIpAddress);
   }
 
   @Override
@@ -247,6 +387,11 @@ public class ValidatedFieldsItems {
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    eventConversionType: ").append(toIndentedString(eventConversionType)).append("\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
+    sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
+    sb.append("    hashedEmail: ").append(toIndentedString(hashedEmail)).append("\n");
+    sb.append("    hashedPhone: ").append(toIndentedString(hashedPhone)).append("\n");
+    sb.append("    hashedMobileAdId: ").append(toIndentedString(hashedMobileAdId)).append("\n");
+    sb.append("    hashedIpAddress: ").append(toIndentedString(hashedIpAddress)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -275,6 +420,11 @@ public class ValidatedFieldsItems {
     openapiFields.add("price");
     openapiFields.add("event_conversion_type");
     openapiFields.add("event_type");
+    openapiFields.add("timestamp");
+    openapiFields.add("hashed_email");
+    openapiFields.add("hashed_phone");
+    openapiFields.add("hashed_mobile_ad_id");
+    openapiFields.add("hashed_ip_address");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -319,6 +469,21 @@ public class ValidatedFieldsItems {
       }
       if (jsonObj.get("event_type") != null && !jsonObj.get("event_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `event_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("event_type").toString()));
+      }
+      if (jsonObj.get("timestamp") != null && !jsonObj.get("timestamp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timestamp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timestamp").toString()));
+      }
+      if (jsonObj.get("hashed_email") != null && !jsonObj.get("hashed_email").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hashed_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hashed_email").toString()));
+      }
+      if (jsonObj.get("hashed_phone") != null && !jsonObj.get("hashed_phone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hashed_phone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hashed_phone").toString()));
+      }
+      if (jsonObj.get("hashed_mobile_ad_id") != null && !jsonObj.get("hashed_mobile_ad_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hashed_mobile_ad_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hashed_mobile_ad_id").toString()));
+      }
+      if (jsonObj.get("hashed_ip_address") != null && !jsonObj.get("hashed_ip_address").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hashed_ip_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hashed_ip_address").toString()));
       }
   }
 

@@ -45,7 +45,8 @@ public class SendEventsSync {
                 // Alternatively, you can use hashed-field setters (e.g. hashEmail()) to set the hashed value directly.
                 .email("usr1@gmail.com")
                 .ipAddress("202.117.0.20")
-                .phoneNumber("123-456-7890");
+                .phoneNumber("123-456-7890")
+                .purchaseUserValue("500");
 
         CapiEvent e2 = new CapiEvent()
                 .pixelId(PIXEL_ID)
@@ -54,7 +55,8 @@ public class SendEventsSync {
                 .timestamp("1656022510346")
                 .email("usr1@gmail.com")
                 .ipAddress("202.117.0.20")
-                .phoneNumber("123-456-7890");
+                .phoneNumber("123-456-7890")
+                .purchaseUserValue("500");
 
         // Send an event synchronously
         Response response1 = capi.sendEventSync(e2);

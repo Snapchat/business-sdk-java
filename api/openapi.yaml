@@ -133,6 +133,7 @@ components:
         search_string: search_string
         pixel_id: pixel_id
         hashed_last_name_sha: hashed_last_name_sha
+        purchase_user_value: purchase_user_value
         item_category: item_category
         event_tag: event_tag
         event_type: event_type
@@ -260,6 +261,8 @@ components:
           type: string
         region:
           type: string
+        purchase_user_value:
+          type: string
       type: object
     response:
       example:
@@ -300,19 +303,29 @@ components:
         - record_index: 0
           validated_fields:
             event_type: event_type
+            hashed_ip_address: hashed_ip_address
             price: price
             event_conversion_type: event_conversion_type
+            hashed_phone: hashed_phone
+            hashed_email: hashed_email
+            hashed_mobile_ad_id: hashed_mobile_ad_id
             currency: currency
             pixel_id: pixel_id
             snap_app_id: snap_app_id
+            timestamp: timestamp
         - record_index: 0
           validated_fields:
             event_type: event_type
+            hashed_ip_address: hashed_ip_address
             price: price
             event_conversion_type: event_conversion_type
+            hashed_phone: hashed_phone
+            hashed_email: hashed_email
+            hashed_mobile_ad_id: hashed_mobile_ad_id
             currency: currency
             pixel_id: pixel_id
             snap_app_id: snap_app_id
+            timestamp: timestamp
         warning_records:
         - reason: reason
           record_indexes:
@@ -376,6 +389,7 @@ components:
             search_string: search_string
             pixel_id: pixel_id
             hashed_last_name_sha: hashed_last_name_sha
+            purchase_user_value: purchase_user_value
             item_category: item_category
             event_tag: event_tag
             event_type: event_type
@@ -433,6 +447,7 @@ components:
             search_string: search_string
             pixel_id: pixel_id
             hashed_last_name_sha: hashed_last_name_sha
+            purchase_user_value: purchase_user_value
             item_category: item_category
             event_tag: event_tag
             event_type: event_type
@@ -502,6 +517,7 @@ components:
           search_string: search_string
           pixel_id: pixel_id
           hashed_last_name_sha: hashed_last_name_sha
+          purchase_user_value: purchase_user_value
           item_category: item_category
           event_tag: event_tag
           event_type: event_type
@@ -613,11 +629,16 @@ components:
         record_index: 0
         validated_fields:
           event_type: event_type
+          hashed_ip_address: hashed_ip_address
           price: price
           event_conversion_type: event_conversion_type
+          hashed_phone: hashed_phone
+          hashed_email: hashed_email
+          hashed_mobile_ad_id: hashed_mobile_ad_id
           currency: currency
           pixel_id: pixel_id
           snap_app_id: snap_app_id
+          timestamp: timestamp
       properties:
         validated_fields:
           $ref: '#/components/schemas/validated_fields_items'
@@ -627,11 +648,16 @@ components:
     validated_fields_items:
       example:
         event_type: event_type
+        hashed_ip_address: hashed_ip_address
         price: price
         event_conversion_type: event_conversion_type
+        hashed_phone: hashed_phone
+        hashed_email: hashed_email
+        hashed_mobile_ad_id: hashed_mobile_ad_id
         currency: currency
         pixel_id: pixel_id
         snap_app_id: snap_app_id
+        timestamp: timestamp
       properties:
         pixel_id:
           type: string
@@ -644,6 +670,16 @@ components:
         event_conversion_type:
           type: string
         event_type:
+          type: string
+        timestamp:
+          type: string
+        hashed_email:
+          type: string
+        hashed_phone:
+          type: string
+        hashed_mobile_ad_id:
+          type: string
+        hashed_ip_address:
           type: string
       type: object
   securitySchemes:

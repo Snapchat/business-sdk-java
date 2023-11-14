@@ -19,7 +19,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.snap.business.sdk</groupId>
   <artifactId>capi-java</artifactId>
-  <version>1.1.7</version>
+  <version>1.1.9</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -35,7 +35,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.snap.business.sdk:capi-java:1.1.7"
+     implementation "com.snap.business.sdk:capi-java:1.1.9"
   }
 ```
 
@@ -157,5 +157,6 @@ Snap’s Conversion API provides the validate, log, and stats endpoints for adve
 
 ### Customize the http client
 - When you create an instance of ConversionApi, it utilizes a default OkHttpClient by default. However, you can choose to provide a custom client by passing it as an argument to the constructor. For more details, please refer to the example in SendEventsSync.
+
 Please open a GitHub issue if you want to record a bug report, enhancement proposal, or give any other product feedback.
 
