@@ -2,10 +2,11 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'java'
 apply plugin: 'com.diffplug.spotless'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 ext {
     PUBLISH_GROUP_ID = 'com.snap.business.sdk'
-    PUBLISH_VERSION = '1.1.7'
+    PUBLISH_VERSION = '1.1.9'
     PUBLISH_ARTIFACT_ID = 'capi-java'
 }
 
@@ -21,6 +22,7 @@ buildscript {
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath 'com.diffplug.spotless:spotless-plugin-gradle:6.3.0'
         classpath 'io.github.gradle-nexus:publish-plugin:1.1.0'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.4'
     }
 }
 
@@ -29,6 +31,13 @@ repositories {
 }
 sourceSets {
     main.java.srcDirs = ['src/main/java']
+}
+
+shadowJar {
+    archiveBaseName.set(PUBLISH_ARTIFACT_ID)
+    archiveVersion.set(PUBLISH_VERSION)
+    archiveClassifier.set('shadow')
+    mergeServiceFiles()
 }
 
 if(hasProperty('target') && target == 'android') {
@@ -99,6 +108,11 @@ if(hasProperty('target') && target == 'android') {
             maven(MavenPublication) {
                artifactId = 'capi-java'
                from components.java
+            }
+
+            mavenShadow(MavenPublication) {
+                artifactId = 'capi-java-shadow'
+                artifact shadowJar
             }
         }
     }
@@ -196,4 +210,6 @@ if (jenkinsHome != null) {
         }
     }
 }
+
+build.dependsOn shadowJar
 
